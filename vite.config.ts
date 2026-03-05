@@ -22,12 +22,3 @@ export default defineConfig(({ mode }) => {
       }
     };
 });
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react' // ou vue, etc.
-
-// https://vitejs.dev/config/
-export default defineConfig({
-  base: '/MP-BOX-TROCA/', // <--- ADICIONE APENAS ESTA LINHA AQUI
-  plugins: [react()],
-  // ... mantenha o que já existir aqui embaixo
-})
