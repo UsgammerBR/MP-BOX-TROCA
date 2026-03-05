@@ -26,7 +26,8 @@ export const EquipmentSection = ({
     deleteMode, selectedForDelete, onToggleSelect, 
     isChristmas, onAddItem, onCollapse 
 }: EquipmentSectionProps) => {
-    const sortedItems = [...items].sort((a, b) => {
+    const validItems = items.filter(item => !!item);
+    const sortedItems = [...validItems].sort((a, b) => {
         const aActive = isItemActive(a);
         const bActive = isItemActive(b);
         if (aActive && !bActive) return -1;

@@ -17,9 +17,11 @@ export const isChristmasPeriod = (): boolean => {
 };
 
 export const isItemActive = (item: EquipmentItem): boolean => 
-    (item.contract && item.contract.trim() !== '') || 
-    (item.serial && item.serial.trim() !== '') || 
-    item.photos.length > 0;
+    !!item && (
+        (item.contract && item.contract.trim() !== '') || 
+        (item.serial && item.serial.trim() !== '') || 
+        (item.photos && item.photos.length > 0)
+    );
 
 export const generateMonthlyReport = (data: AppData, date: Date) => {
     const month = date.getMonth();

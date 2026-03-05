@@ -115,7 +115,14 @@ const AppContent = () => {
     const timer = setTimeout(() => setIsLoading(false), 2000);
     
     const savedData = localStorage.getItem('equipmentData');
-    if (savedData) dispatch({ type: 'SET_DATA', payload: JSON.parse(savedData) });
+    if (savedData) {
+        try {
+            dispatch({ type: 'SET_DATA', payload: JSON.parse(savedData) });
+        } catch (e) {
+            console.error("Error parsing saved equipment data", e);
+            localStorage.removeItem('equipmentData');
+        }
+    }
     
     const fetchServerData = async () => {
         try {
