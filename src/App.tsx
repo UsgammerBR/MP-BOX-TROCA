@@ -53,8 +53,12 @@ const AppContent = () => {
 
   // Carregar notificações do localStorage
   useEffect(() => {
-    const saved = localStorage.getItem('equipment_notifications');
-    if (saved) setNotifications(JSON.parse(saved));
+    try {
+        const saved = localStorage.getItem('equipment_notifications');
+        if (saved) setNotifications(JSON.parse(saved));
+    } catch (e) {
+        console.error("Error parsing notifications", e);
+    }
   }, []);
 
   // Salvar notificações
